@@ -1,0 +1,114 @@
+<!-- add.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Cafe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                width: 90%;
+            }
+        }
+
+                nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Add New Cafe</h1>
+    </header>
+
+    <nav>
+        <a href={{url_for('home')}}>Home</a>
+        <a href="{{url_for('add_cafe')}}">Add Cafe</a>
+        <a href="#">Sign Up (COMING SOON)</a>
+    </nav>
+
+    <div class="form-container">
+        <form method="post" action="{{ url_for('add_cafe') }}" onsubmit="return confirm('Are you sure you want to add this cafe?')">
+    {{ form.csrf_token }}
+    <label for="cafe">Cafe Name:</label>
+    {{ form.cafe }}
+
+    <label for="local_url">Location:</label>
+    {{ form.local_url }}
+
+    <label for="img_url">Image (as URL):</label>
+    {{ form.img_url }}
+
+    <label for="location">Area of London:</label>
+    {{ form.location }}
+
+    <label for="coffee_price">Coffee Price:</label>
+    {{ form.coffee_price }}
+
+    <label for="wifi">WiFi Available:</label>
+    {{ form.wifi }}
+
+    <label for="power">Electrical Charging Available:</label>
+    {{ form.power }}
+
+    <label for="toilet">Toilets Available:</label>
+    {{ form.toilet }}
+
+    <label for="calls">Calls Allowed:</label>
+    {{ form.calls }}
+
+    {{ form.submit }}
+    <!-- Add more form fields as needed -->
+
+</form>
+
+
+    </div>
+</body>
+</html>

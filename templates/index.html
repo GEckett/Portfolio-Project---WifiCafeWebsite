@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>London Cafes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        section {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .cafe-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .cafe-card {
+                width: 100%;
+            }
+        }
+
+        .cafe-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.cafe-image {
+    height: 150px; /* Set a fixed height for the image container */
+    overflow: hidden; /* Hide any overflowing content */
+}
+
+.cafe-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.cafe-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.cafe-card img.cafe-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>London Cafes</h1>
+    </header>
+
+    <nav>
+        <a href={{url_for('home')}}>Home</a>
+        <a href="{{url_for('add_cafe')}}">Add Cafe</a>
+        <a href="#">Sign Up (COMING SOON)</a>
+    </nav>
+
+<section id="cafeSection">
+    {% for cafe in cafes %}
+        <div class="cafe-card">
+            <h2><a href="{{ url_for('detail', cafe_id=cafe.id) }}">{{ cafe['name'] }}</a> </h2>
+        </div>
+    {% endfor %}
+</section>
+</body>
+</html>
